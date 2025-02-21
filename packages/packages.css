@@ -1,0 +1,144 @@
+main {
+    padding-block-start: 2rem;
+}
+
+.background {
+    background: url("../images/plans-background.jpg") center/cover;
+    filter: grayscale(40%);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.package {
+    border: 4px solid var(--dark-green);
+    border-inline-start: none;
+    margin: 1rem 0;
+    width: 80%;
+    position: relative;
+    overflow: hidden
+}
+
+.package:hover,
+.package:active {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-color: #ff5454;
+    animation: push-up 1s ease-out forwards;
+}
+
+.package a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 2rem;
+}
+
+.package__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    /* margin: 1.2rem; */
+    font-size: 0.7rem;
+    color: white;
+    background: #ff5454;
+    padding: 0.5rem;
+    width: 12rem;
+    text-align: center;
+    transform: rotateZ(45deg) translateX(3.5rem) translateY(-1rem);
+    transform-origin: center;
+}
+
+.package__subtitle {
+    color: #979797;
+}
+
+.package__info {
+    padding: 1rem;
+    border: 1px solid var(--dark-green);
+    color: var(--dark-green);
+    font-size: 1.2rem;
+    background: white;
+    /* font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic; */
+    /*
+    short-hand font rule
+    font-style font-variant font-weight font-size/line-height font-fmaily
+    eg. 
+    font: italic small-caps 900 1.2rem "Roboto", sans-serif;
+    */
+}
+
+.clearfix {
+    clear: both;
+}
+
+#plus {
+    background: rgba(213, 255, 220, 0.95);
+}
+
+#free {
+    background: rgba(234, 252, 237, 0.95);
+    float: right;
+    border-inline-start: 4px solid var(--dark-green);
+    border-inline-end: none;
+    text-align: right;
+}
+
+#free:hover,
+#free:active {
+    border-inline-start-color: #ff5454
+}
+
+#premium {
+    background: rgba(14, 79, 31, 0.95);
+}
+
+#premium .package__title {
+    color: white;
+}
+
+#premium .package__subtitle {
+    color: #bbb;
+}
+
+@media (min-width:40rem) {
+    main {
+        max-width: 93.75rem;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+    }
+}
+
+@media (min-width:93.75rem) {
+    .package {
+        border-inline-start: 4px solid var(--dark-green);
+    }
+
+    #free {
+        border-inline-end: 4px solid var(--dark-green);
+    }
+
+    #free:hover,
+    #free:active {
+        border-inline-end-color: #ff5454
+    }
+}
+
+@keyframes push-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    33% {
+        transform: translateY(-1.5rem);
+    }
+
+    100% {
+        transform: translateY(-1rem);
+    }
+}

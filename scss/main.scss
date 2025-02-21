@@ -1,0 +1,111 @@
+@use "sass:map";
+@use "sass:color";
+@use "variables" as var;
+@use "typography" as type;
+
+@mixin display-flex() {
+    display:-webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin media-min-width($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}
+
+html {
+    font-size: 94.75%;
+    @include media-min-width(40rem) {
+        font-size: 125%;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    @include display-flex();
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: var.$size-default*3 0;
+    box-sizing: border-box;
+}
+
+
+.sass-section {
+    border: 0.05rem solid #521751;
+    background: rgb(246.72, 225.48, 246.36);
+    text-align: center;
+    width: 90%;
+
+    @media (min-width: 40rem) {
+        width: 30rem;
+    }
+}
+
+.sass-introduction {
+    @extend .sass-section;
+    padding: var.$size-default*2;
+    box-shadow: var.$size-tiny var.$size-tiny calc(var.$size-tiny/2) #ccc;
+
+    p {
+        margin: 0;
+    }
+}
+
+.sass-details {
+    @extend .sass-section;
+    padding: var.$size-default;
+    margin: var.$size-default*2 0;
+}
+
+.section-header {
+    border-bottom: calc(var.$size-tiny/4) solid var.$main-color;
+
+    h1 {
+        margin: 0 0 var.$size-default 0;
+    }
+}
+
+.documentation-links {
+    list-style: none;
+    margin: var.$size-default 0 0 0;
+    padding: 0;
+    @include display-flex();
+    flex-direction: column;
+
+    li {
+        margin: var.$size-tiny 0;
+        background: white;
+    }
+
+    .documentation-link {
+        text-decoration: none;
+        color: var.$main-color;
+        display: block;
+        padding: var.$size-tiny;
+        border: 0.05rem solid var.$main-color;
+
+        // use ampersand to apply pseudo-classes/classes of parent etc to parent class
+        &:hover,
+        &:active {
+            color: white;
+            background: map.get(var.$colors, secondary);
+            border-color: map.get(var.$colors, secondary);
+        }
+    }
+  
+    // .documentation-link:hover,
+    // .documentation-link:active {
+    //     color: white;
+    //     background: map.get(var.$colors, secondary);
+    //     border-color: map.get(var.$colors, secondary);
+    // }
+}
+
